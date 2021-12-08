@@ -2,7 +2,7 @@
     error_reporting(E_ALL);
     ini_set("display_errors", 1);
     ini_set('display_startup_errors', 1);
-    echo "<html><head><title>Create User</title></head><body>"
+    echo "<html><head><title>Create User</title></head><body>";
 
     function success() {
         echo "<h1>Success</h1>";
@@ -36,7 +36,7 @@
         success();
     }
 
-    echo "</body></html>"
+    echo "</body></html>";
     $mysqli->close();
 
 ?>
