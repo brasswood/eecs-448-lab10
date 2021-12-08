@@ -10,7 +10,6 @@
 
     $mysqli = new mysqli("mysql.eecs.ku.edu", "***REMOVED***", "***REMOVED***", "***REMOVED***");
 
-    echo "<html><body>";
     if ($mysqli->connect_errno) {
         echo "<h1>Could not connect to DB</h1></body></html>";
         exit();
