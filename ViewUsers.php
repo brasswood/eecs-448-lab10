@@ -7,16 +7,20 @@ if ($mysqli->connect_errno) {
     echo "<h1>Could not connect to DB</h1></body></html>";
     exit();
 }
-echo "<table style=><thead><th>Users</th></thead><tbody>";
 $query = "SELECT user_id FROM Users";
 
 if ($result = $mysqli->query($query)) {
+    echo "<table style=><thead><th>Users</th></thead><tbody>";
     while ($row = $result->fetch_assoc()) {
         printf("<tr><td>%s</td></tr>", $row["user_id"]);
     }
+    echo "</tbody></table>";
     $result->free();
 }
-echo "</tbody></table>";
+else {
+    echo "<h1>Database query failed</h1>";
+}
+
 echo "</body></html>";
 $mysqli->close();
 ?>
