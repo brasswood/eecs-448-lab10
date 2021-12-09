@@ -1,0 +1,29 @@
+<html>
+    <head>
+        <title>Delete Posts</title>
+        <style>table, th, td { border: 1px solid black; border-collapse: collapse }</style>
+    </head>
+    <body>
+        <?php
+            $mysqli = new mysqli("mysql.eecs.ku.edu", "***REMOVED***", "***REMOVED***", "***REMOVED***");
+
+            if ($mysqli->connect_errno) {
+                echo "<h1>Could not connect to DB</h1>";
+                exit();
+            }
+            else {
+                $result = $mysqli->query("SELECT * FROM Posts");
+                if (!$result) {
+                    echo "<h1>Could not retrieve posts</h1>";
+                }
+                else {
+                    echo "<form action='DeletePost.php' method='post' id='theform'></form><table><thead><tr><th>Delete?</th><th>Author</th><th>Post</th></tr></thead><tbody>";
+                    while ($row = $result->fetch_assoc()) {
+                        echo "<tr><td><input type='checkbox' name='toDelete[]' value='{$row['post_id']}' form='theform'></td><td>{$row['author_id']}</td><td>{$row['content']}</td></tr>";
+                    }
+                    echo "</tbody></table><p><input type='submit' form='theform'></p>";
+                }
+            }
+        ?>
+    </body>
+</html>
